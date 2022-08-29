@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Person;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +15,12 @@ use App\Person;
 |
 */
 
-// service container binding 
-app()->bind('getName',Person::class);
-
 Route::get('/', function () {
 
         $name = app()->make('getName');
         $name ->setName("Sizar",35);
         echo $name->getName();
         die();
-
+        
     return view('welcome');
 });
