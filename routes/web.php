@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Person;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// service container binding 
+app()->bind('getName',Person::class);
+
 Route::get('/', function () {
+
+        $name = app()->make('getName');
+        $name ->setName("Sizar",35);
+        echo $name->getName();
+        die();
+
     return view('welcome');
 });
